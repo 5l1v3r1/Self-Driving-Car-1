@@ -44,7 +44,7 @@ def balanceData(data, display=True):
         hist, _ = np.histogram(data["Steering"], nBins)
         plt.bar(center, hist, width=0.06)
         plt.plot((-1, 1), (samplesPerBin, samplesPerBin))
-        plt.show()
+        #plt.show()
 
 def loadData(path, data):
     imagesPath = []
@@ -52,6 +52,11 @@ def loadData(path, data):
 
     for i in range(len(data)):
         indexedData = data.iloc[i]
-        print(indexedData)
+        #print(indexedData)
         imagesPath.append(os.path.join(path, "IMG", indexedData[0]))
-        print(os.path.join(path, "IMG", indexedData[0]))
+        #print(os.path.join(path, "IMG", indexedData[0]))
+        steering.append(float(indexedData[3]))
+
+    imagesPath = np.asarray(imagesPath)
+    steering = np.asarray(steering)
+    return imagesPath, steering
