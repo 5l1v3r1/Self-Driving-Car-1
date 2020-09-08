@@ -8,3 +8,5 @@ import matplotlib.pyplot as plt
 path = "beta_simulator_windows/data"
 data = importDataInfo(path)
 balanceData(data)
+
+loadData(path, data)
