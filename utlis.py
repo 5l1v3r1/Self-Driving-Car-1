@@ -7,7 +7,6 @@ from sklearn.utils import shuffle
 def getName(filePath):
     return filePath.split("\\")[-1]
 
-
 def importDataInfo(path):
     columns = ["Center", "Left", "Right", "Steering", "Throttle", "Brake", "Speed"]
     data = pd.read_csv(os.path.join(path, "driving_log.csv"), names=columns)
@@ -15,7 +14,6 @@ def importDataInfo(path):
     # print(data["Center"])
     print("Total images imported: ", data.shape[0])
     return data
-
 
 def balanceData(data, display=True):
     nBins = 31
@@ -47,3 +45,13 @@ def balanceData(data, display=True):
         plt.bar(center, hist, width=0.06)
         plt.plot((-1, 1), (samplesPerBin, samplesPerBin))
         plt.show()
+
+def loadData(path, data):
+    imagesPath = []
+    steering = []
+
+    for i in range(len(data)):
+        indexedData = data.iloc[i]
+        print(indexedData)
+        imagesPath.append(os.path.join(path, "IMG", indexedData[0]))
+        print(os.path.join(path, "IMG", indexedData[0]))
