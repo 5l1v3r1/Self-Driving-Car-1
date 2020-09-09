@@ -3,6 +3,8 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
+import matplotlib.image as mpimg
+from imgaug import augmenters as iaa
 
 def getName(filePath):
     return filePath.split("\\")[-1]
@@ -24,7 +26,7 @@ def balanceData(data, display=True):
         center = (bins[:-1] + bins[1:]) * 0.5
         plt.bar(center, hist, width=0.06)
         plt.plot((-1, 1), (samplesPerBin, samplesPerBin))
-        plt.show()
+        #plt.show()
 
     removeIndexList = []
     for j in range(nBins):
@@ -60,3 +62,13 @@ def loadData(path, data):
     imagesPath = np.asarray(imagesPath)
     steering = np.asarray(steering)
     return imagesPath, steering
+
+def augmentImage(imgPath, steering):
+    img = mpimg.imread(imgPath)
+    pan = iaa.Affine(translate_percent={"x":(-0.1, 0.1), "y":(-0.1, 0.1)})
+    img = pan.augment_image(img)
+
+
+
+
+
