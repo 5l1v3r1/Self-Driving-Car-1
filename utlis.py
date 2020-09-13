@@ -9,6 +9,7 @@ import cv2
 import random
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Convolution2D, Flatten, Dense
+from tensorflow.keras.optimizers import Adam
 
 def getName(filePath):
     return filePath.split("\\")[-1]
@@ -122,3 +123,8 @@ def batchGen(imagesPath, steeringList, batchSize, trainFlag):
             imgBatch.append(img)
             steeringBatch.append(steering)
         yield(np.asarray(imgBatch), np.asarray(steeringBatch))
+
+def createModel():
+    model = Sequential
+
+    model.add(Convolution2D(24, ))
