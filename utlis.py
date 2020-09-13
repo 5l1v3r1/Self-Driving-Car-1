@@ -7,7 +7,8 @@ import matplotlib.image as mpimg
 from imgaug import augmenters as iaa
 import cv2
 import random
-import tensorflow
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Convolution2D, Flatten, Dense
 
 def getName(filePath):
     return filePath.split("\\")[-1]

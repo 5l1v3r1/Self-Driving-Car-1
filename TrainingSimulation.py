@@ -4,6 +4,8 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Convolution2D, Flatten, Dense
 
 path = "Data"
 data = importDataInfo(path)
