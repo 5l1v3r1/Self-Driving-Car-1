@@ -19,6 +19,10 @@ print("Total Training Images: ", len(xTrain))
 print("Total Validation Images: ", len(xVal))
 
 
+model = createModel()
+model.summary()
+
+
 
 
 

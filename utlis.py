@@ -11,6 +11,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Convolution2D, Flatten, Dense
 from tensorflow.keras.optimizers import Adam
 
+
 def getName(filePath):
     return filePath.split("\\")[-1]
 
@@ -107,6 +108,7 @@ imgRe = preProcessing(mpimg.imread("test.jpg"))
 plt.imshow(imgRe)
 plt.show()
 
+
 def batchGen(imagesPath, steeringList, batchSize, trainFlag):
     while True:
         imgBatch = []
@@ -122,9 +124,24 @@ def batchGen(imagesPath, steeringList, batchSize, trainFlag):
             img = preProcessing(img)
             imgBatch.append(img)
             steeringBatch.append(steering)
-        yield(np.asarray(imgBatch), np.asarray(steeringBatch))
+        yield (np.asarray(imgBatch), np.asarray(steeringBatch))
+
 
 def createModel():
-    model = Sequential
+    model = Sequential()
 
-    model.add(Convolution2D(24, ))
+    model.add(Convolution2D(24, (5, 5), (2, 2), input_shape=(66, 200, 3), activation="elu"))
+    model.add(Convolution2D(36, (5, 5), (2, 2), activation="elu"))
+    model.add(Convolution2D(48, (5, 5), (2, 2), activation="elu"))
+    model.add(Convolution2D(64, (3, 3), activation="elu"))
+    model.add(Convolution2D(64, (3, 3), activation="elu"))
+
+    model.add(Flatten())
+    model.add(Dense(100, activation="elu"))
+    model.add(Dense(50, activation="elu"))
+    model.add(Dense(10, activation="elu"))
+    model.add(Dense(1))
+
+    model.compile(Adam(lr=0.0001), loss="mse")
+
+    return model
