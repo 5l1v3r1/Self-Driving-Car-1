@@ -52,8 +52,8 @@ def balanceData(data, display=True):
 
     if display:
         hist, _ = np.histogram(data["Steering"], nBins)
-        plt.bar(center, hist, width=0.06)
-        plt.plot((-1, 1), (samplesPerBin, samplesPerBin))
+        # plt.bar(center, hist, width=0.06)
+        # plt.plot((-1, 1), (samplesPerBin, samplesPerBin))
         # plt.show()
 
 
@@ -105,8 +105,10 @@ def preProcessing(img):
 
 
 imgRe = preProcessing(mpimg.imread("test.jpg"))
-plt.imshow(imgRe)
-plt.show()
+
+
+# plt.imshow(imgRe)
+# plt.show()
 
 
 def batchGen(imagesPath, steeringList, batchSize, trainFlag):
